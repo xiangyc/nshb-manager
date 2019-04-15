@@ -1,0 +1,84 @@
+<div class="modal-content" ng-init="init()">
+
+    <div class="modal-header">
+        <button type="button" ng-click="onCancelClick()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><strong>按条件配置消息</strong></h4>
+    </div>
+
+    <div class="modal-body">
+        <div class="con_row">
+            <tr class="detail-row">
+				<td colspan="8">
+					<div class="table-detail">
+						<div class="row">
+
+                            <div class="col-xs-12">
+								<div class="space visible-xs"></div>
+
+								<div class="profile-user-info profile-user-info-striped">
+                                    <div class="input-group" style="margin-left:20px;margin-top:20px;float:left">
+
+										<span class="input-group-addon">目标条件</span>
+						                <select class="chosen-select form-control" id="targetRange" ng-model="systemMessage.targetRange" name="targetRange" style="width:250px;" ng-change="changeTarget()">
+											<option value="">---请选择---</option>
+				                            <option value="0">---全部用户---</option>
+				                            <option value="1">---条件用户---</option>
+						                </select>
+
+                                        <span class="input-group-addon">年龄条件</span>
+						                <select class="chosen-select form-control" id="ageRange" ng-model="systemMessage.ageRange" name="ageRange" style="width:250px;">
+											<option value="">---请选择---</option>
+				                            <option value="0">---18-25岁---</option>
+				                            <option value="1">---25-35岁---</option>
+											<option value="2">---35-45岁---</option>
+                                            <option value="3">---45岁以上---</option>
+						                </select>
+
+						            </div>
+
+                                    <div class="input-group" style="margin-left:20px;margin-top:70px;margin-bottom:20px;">
+										<span class="input-group-addon">性别条件</span>
+						                <select class="chosen-select form-control" id="sex" ng-model="systemMessage.sex" name="sex" style="width:250px;">
+											<option value="">---请选择---</option>
+				                            <option value="1">---男---</option>
+				                            <option value="0">---女---</option>
+						                </select>
+
+						                <span class="input-group-addon">用户类型</span>
+						                <select class="chosen-select form-control" id="type" ng-model="systemMessage.type" name="type" style="width:250px;">
+											<option value="">---请选择---</option>
+				                            <option value="0">---普通用户---</option>
+				                            <option value="1">---商家---</option>
+						                </select>
+						            </div>
+
+						            <div class="input-group" style="margin-left:20px;margin-bottom:50px;">
+										<span class="input-group-addon">消息内容</span>
+										<input class="form-control" ng-model="systemMessage.content" type="text" id="content" maxlength="40" placeholder="请填写消息内容,最多40个字" style="width:647px;" />
+									</div>
+
+								</div>
+							</div>
+
+                            <div class="col-xs-12" style="margin-top:30px;">
+								<div class="text-center">
+                                    <div style="margin-left:295px;float:left;" ng-click="saveSystemMessage()">
+                                        <button type="button" class="btn btn-white btn-info"><i class="ace-icon fa fa-list"></i><strong>保存</strong>&nbsp;&nbsp;</button>
+                                    </div>
+                                    <div style="margin-left:35px;float:left;margin-bottom:20px;" ng-click="onCancelClick()">
+                                        <button type="button" class="btn btn-white btn-warning"><i class="ace-icon fa fa-list"></i><strong>取消</strong></button>
+                                    </div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+        </div>
+    </div>
+
+    <div style="margin-top:35px;">
+    </div>
+
+</div>

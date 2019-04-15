@@ -1,0 +1,81 @@
+<div class="modal-content" ng-init="init()">
+
+    <div class="modal-header">
+        <button type="button" ng-click="onCancelClick()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><strong>按条件发放奖券</strong></h4>
+    </div>
+
+    <div class="modal-body">
+        <div class="con_row">
+            <tr class="detail-row">
+				<td colspan="8">
+					<div class="table-detail">
+						<div class="row">
+
+                            <div class="col-xs-12">
+								<div class="space visible-xs"></div>
+
+								<div class="profile-user-info profile-user-info-striped">
+                                    <div class="input-group" style="margin-left:20px;margin-top:20px;float:left">
+
+										<span class="input-group-addon">按目标</span>
+						                <select class="chosen-select form-control" id="target" ng-model="target" name="target" style="width:250px;" ng-change="changeTarget()">
+											<option value="">---请选择---</option>
+				                            <option value="0">---全部用户---</option>
+				                            <option value="">---按条件---</option>
+						                </select>
+
+                                        <span class="input-group-addon">按年龄</span>
+						                <select class="chosen-select form-control" id="age" ng-model="age" name="age" style="width:250px;">
+											<option value="">---请选择---</option>
+				                            <option value="0">---18-25---</option>
+				                            <option value="1">---25-35---</option>
+											<option value="2">---35-45---</option>
+                                            <option value="3">---45以上---</option>
+						                </select>
+
+						            </div>
+
+                                    <div class="input-group" style="margin-left:20px;margin-top:70px;margin-bottom:30px;">
+										<span class="input-group-addon">按性别</span>
+						                <select class="chosen-select form-control" id="sex" ng-model="sex" name="sex" style="width:250px;">
+											<option value="">---请选择---</option>
+				                            <option value="1">---男---</option>
+				                            <option value="0">---女---</option>
+						                </select>
+
+						                <span class="input-group-addon">券模板</span>
+						                <select class="chosen-select form-control" id="couponType" ng-model="couponType" name="couponType" style="width:250px;">
+											<option value="">---请选择---</option>
+				                            <option value="0">---新用户注册送10元---</option>
+				                            <option value="1">---老用户充值送20元---</option>
+											<option value="2">---老用户推荐注册送50元---</option>
+						                </select>
+						            </div>
+
+
+								</div>
+							</div>
+
+                            <div class="col-xs-12" style="margin-top:30px;">
+								<div class="text-center">
+                                    <div style="margin-left:295px;float:left;" ng-click="">
+                                        <button type="button" class="btn btn-white btn-info disabled"><i class="ace-icon fa fa-list"></i><strong>发放</strong>&nbsp;&nbsp;</button>
+                                    </div>
+                                    <div style="margin-left:35px;float:left;margin-bottom:20px;" ng-click="onCancelClick()">
+                                        <button type="button" class="btn btn-white btn-warning"><i class="ace-icon fa fa-list"></i><strong>取消</strong></button>
+                                    </div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+        </div>
+    </div>
+
+    <div style="margin-top:35px;">
+    </div>
+
+</div>

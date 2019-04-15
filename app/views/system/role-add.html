@@ -1,0 +1,59 @@
+<div class="modal-content" style="height:330px;width:598px;">
+
+    <div class="modal-header">
+        <button type="button" ng-click="onCancelClick()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><strong ng-if="role.id != null">修改角色</strong><strong ng-if="role.id == null">新增角色</strong></h4>
+    </div>
+
+    <div class="modal-body">
+        <div class="con_row">
+            <tr class="detail-row">
+				<td colspan="8">
+					<div class="table-detail" style="height:150px;">
+						<div id="fuelux-wizard-container">
+							<div class="step-content pos-rel">
+								<div class="step-pane active" data-step="1">
+									<form class="form-horizontal">
+
+										<div class="form-group">
+											<label class="control-label col-xs-12 col-sm-3 no-padding-right"><strong>角色名称</strong></label>
+											<div class="col-xs-12 col-sm-9">
+												<div class="clearfix">
+													<input type="text" placeholder="请输入角色名称" ng-model="role.name" maxlength="10" class="col-xs-12 col-sm-10" />
+												</div>
+											</div>
+										</div>
+										<div class="space-2"></div>
+
+										<div class="form-group">
+											<label class="control-label col-xs-12 col-sm-3 no-padding-right"><strong>角色说明</strong></label>
+											<div class="col-xs-12 col-sm-9">
+												<div class="clearfix">
+													<input type="text" placeholder="请输入角色说明" ng-model="role.note" maxlength="20" class="col-xs-12 col-sm-10" />
+												</div>
+											</div>
+										</div>
+										<div class="space-2"></div>
+
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+        </div>
+    </div>
+
+    <div class="col-md-offset-3 col-md-9" style="margin-left:210px;margin-top:15px;">
+        <button class="btn btn-sm btn-info" type="submit" ng-click="onSaveEdit()" style="margin-right:15px;">
+            <i class="ace-icon fa fa-check bigger-110"></i>
+            保存
+        </button>
+        <button class="btn btn-sm btn-info" type="reset" ng-click="onCancelClick()">
+            <i class="ace-icon fa fa-undo bigger-110"></i>
+            取消
+        </button>
+    </div>
+
+</div>

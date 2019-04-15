@@ -1,0 +1,99 @@
+<div class="modal-content" ng-init="init()">
+
+    <div class="modal-header">
+        <button type="button" ng-click="onCancelClick()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><strong>新增门票</strong></h4>
+    </div>
+
+    <div class="modal-body">
+        <div class="con_row">
+            <tr class="detail-row">
+				<td colspan="8">
+					<div class="table-detail">
+						<div class="row">
+
+                            <div class="col-xs-12">
+								<div class="space visible-xs"></div>
+
+								<div class="profile-user-info profile-user-info-striped">
+                                    <div class="input-group" style="margin-left:20px;margin-top:20px;float:left">
+
+										<span class="input-group-addon">投放开始时间</span>
+
+						                <div class="input-group">
+											<input class="form-control date-picker form_datetime" ng-model="startDate" readonly size="21" type="text"/>
+											<span class="input-group-addon">
+												<i class="fa fa-calendar bigger-110"></i>
+											</span>
+										</div>
+
+                                        <span class="input-group-addon">投放结束时间</span>
+                                        <div class="input-group">
+											<input class="form-control date-picker form_datetime" ng-model="endDate" readonly size="21" type="text"/>
+											<span class="input-group-addon">
+												<i class="fa fa-calendar bigger-110"></i>
+											</span>
+										</div>
+						            </div>
+
+                                    <div class="input-group" style="margin-left:20px;margin-top:70px;margin-bottom:30px;">
+										<span class="input-group-addon">投放地点</span>
+						                <select id="select1" class="chosen-select form-control" ng-model="provinceId" ng-options="province.id as province.name for province in provinceList" ng-change="changeProvince()" style="width:117px;">
+										   <option value="">请选择省</option>
+									    </select>
+
+									    <select id="select2" class="chosen-select form-control" ng-model="regionId" ng-options="region.id as region.regionName for region in regionList" ng-change="changeRegion()" style="width:117px;margin-left: 5px;">
+										   <option value="">请选择市</option>
+									    </select>
+
+									    <div class="input-group" style="padding-left: 75px;">
+											<span class="input-group-addon">投放张数</span>
+											<input class="form-control" ng-model="value" type="text" id="value" maxlength="20" />
+										</div>
+
+						            </div>
+
+
+								</div>
+							</div>
+
+                            <div class="col-xs-12" style="margin-top:30px;">
+								<div class="text-center">
+                                    <div style="margin-left:295px;float:left;" ng-click="save()">
+                                        <button type="button" class="btn btn-white btn-info"><i class="ace-icon fa fa-list"></i><strong>保存</strong>&nbsp;&nbsp;</button>
+                                    </div>
+                                    <div style="margin-left:35px;float:left;margin-bottom:20px;" ng-click="onCancelClick()">
+                                        <button type="button" class="btn btn-white btn-warning"><i class="ace-icon fa fa-list"></i><strong>取消</strong></button>
+                                    </div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+        </div>
+    </div>
+
+    <div style="margin-top:35px;">
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+	jQuery(function($) {
+	
+    	$('.form_datetime').datetimepicker({
+	        weekStart: 1,
+			autoclose: 1,
+			startDate: new Date(),
+			todayHighlight: 1,
+			startView: 2,
+			minuteStep:10,
+	        showMeridian: 1
+    	});
+    	
+	});
+
+</script>

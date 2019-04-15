@@ -1,0 +1,160 @@
+<div class="main-content">
+	<div class="main-content-inner">
+		<div class="ace-settings-container" id="ace-settings-container">
+			<!-- 公共皮肤，框架布局设置skin.html -->
+			<div ng-include="'views/common/skin.html'" ></div>
+			<!-- 公共皮肤，框架布局设置skin.html -->
+		</div>
+		<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+			<ul class="breadcrumb">
+				<li>
+					<i class="ace-icon fa fa-home home-icon"></i>
+					<span>后台管理</span>
+				</li>
+
+				<li>
+					<span>运营管理</span>
+				</li>
+			</ul><!-- /.breadcrumb -->
+		</div>
+
+		<div class="page-content">
+			<div class="row">
+				<div class="col-xs-12">
+					<!-- PAGE CONTENT BEGINS -->
+
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="page-header">
+								<form class="form-inline">
+									<div class="input-group">
+										<span class="input-group-addon">手机号</span>
+										<input class="form-control" ng-model="mobile" type="text" id="mobile" placeholder="请输入手机号" maxlength="20" />
+									</div>
+									<div class="input-group" style="margin-left:20px;">
+										<span class="input-group-addon">券名称</span>
+										<input class="form-control" ng-model="name" type="text" id="name" placeholder="请输入券名称" maxlength="20" />
+									</div>
+
+									<div class="input-group" style="margin-left:20px;">
+										<span class="input-group-addon">发放时间</span>
+										<div class="input-group">
+											<input class="form-control date-picker" ng-model="startDate" readonly size="12" type="text"/>
+											<span class="input-group-addon">
+												<i class="fa fa-calendar bigger-110"></i>
+											</span>
+										</div>
+				                        -
+										<div class="input-group">
+											<input class="form-control date-picker" ng-model="endDate" readonly size="12" type="text" />
+											<span class="input-group-addon">
+												<i class="fa fa-calendar bigger-110"></i>
+											</span>
+										</div>
+						            </div>
+						            <div class="input-group" style="margin-left:20px;">
+										<span class="input-group-addon">状态</span>
+						                <select class="chosen-select form-control" id="status" ng-model="status" name="status" style="width:120px;">
+											<option value="">请选择</option>
+				                            <option value="0">未使用</option>
+				                            <option value="1">已使用</option>
+											<option value="-1">已过期</option>
+						                </select>
+						            </div>
+
+						            <div class="form-group" style="margin-left:100px;margin-right:15px;">
+						                <button type="button" class="btn btn-white btn-success" ng-click="query()"><i class="ace-icon fa fa-search nav-search-icon"></i><strong>查询</strong></button>
+						            </div>
+						            <div class="form-group">
+						                <button type="button" class="btn btn-white btn-info" ng-click="reset()"><i class=" ace-icon fa fa-undo"></i><strong>重置</strong></button>
+						            </div>
+
+									<div class="form-group" style="margin-left:30px;">
+						                <button type="button" class="btn btn-white btn-danger" ng-click="openSendCouponWin()"><i class="ace-icon fa fa-cogs"></i><strong>发放奖券</strong></button>
+						            </div>
+						        </form>
+							</div><!-- /.page-header -->
+
+							<div class="table-header">
+								优惠券列表
+							</div>
+							<div>
+								<table class="table table-striped table-bordered table-hover" ng-init="getPage()">
+									<thead>
+										<tr>
+											<th>序号</th>
+											<th>昵称</th>
+											<th>手机号</th>
+											<th>券名称</th>
+											<th>券面值(元)</th>
+											<th><i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>发放时间</th>
+											<th><i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>使用时间</th>
+											<th>状态</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										<tr ng-repeat="row in data" repeat-finish align="center">
+											<td>{{($index+1) + (currentPage - 1) * itemsPerPage}}</td>
+											<td>{{row.nickName}}</td>
+											<td>{{row.mobile}}</td>
+											<td>{{row.name}}</td>
+											<td style="color:#D53F40"><strong>{{row.value}}<strong></td>
+											<td>{{row.createTime | date : 'yyyy-MM-dd HH:mm:ss'}}</td>
+											<td>{{row.usedTime | date : 'yyyy-MM-dd HH:mm:ss'}}</td>
+											<td>
+												<div class="label {{row.status | decode:1:'label-success':-1:'label-danger':0:'label-info':'label-info'}}" style="width:60px;">
+													{{row.status | decode:0:'未使用':1:'已使用':-1:'已过期':'未使用'}}
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<div ng-show="totalItems > 0">
+					            <h5 style="font-size:14px;float:left;">
+					                <select ng-model="viewby" ng-change="setItemsPerPage(viewby)">
+					                    <option>10</option>
+					                    <option>20</option>
+					                    <option>30</option>
+					                </select>&nbsp;条记录 总共{{totalItems}}条记录
+								</h5>
+					            <uib-pagination
+					                    total-items="totalItems"
+					                    ng-model="currentPage"
+					                    max-size="5"
+					                    boundary-links="true"
+					                    force-ellipses="false"
+					                    first-text="首页"
+					                    last-text="末页"
+					                    previous-text="上一页"
+					                    next-text="下一页"
+					                    num-pages="numPages"
+					                    ng-change="pageChanged()"
+					                    items-per-page="itemsPerPage"
+					                    class="pagination-sm" style="float:right;margin:0;">
+					            </uib-pagination>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- PAGE CONTENT ENDS -->
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /.page-content -->
+	</div>
+</div><!-- /.main-content -->
+
+<script type="text/javascript">
+
+	jQuery(function($) {
+		$('.date-picker').datepicker({
+    		autoclose: true,
+    		todayHighlight: true,
+            format: "yyyy-mm-dd"
+    	})
+    	.next().on(ace.click_event, function(){
+    		$(this).prev().focus();
+    	});
+	});
+
+</script>

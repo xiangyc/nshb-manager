@@ -1,0 +1,31 @@
+<div class="modal-content" style="overflow-y:auto;max-height:690px;min-height:300px;">
+
+    <div class="modal-header">
+        <button type="button" ng-click="onCancelClick()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><strong>角色权限设置</strong></h4>
+    </div>
+
+    <div class="modal-body" >
+        <div class="con_row">
+            <tr class="detail-row">
+                <td colspan="8">
+                    <div class="table-detail" style="width:565px;height:500px;overflow-y:auto;">
+                        <div ivh-treeview="menu"
+                            ivh-treeview-expand-to-depth="1"
+                            ivh-treeview-use-checkboxes="true"/>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        </div>
+    </div>
+
+    <div class="modal-footer" style="text-align:center;height:80px;">
+        <button class="btn btn-sm btn-success" type="submit" ng-click="onSelectAll()">全部选择</button>
+        <button class="btn btn-sm btn-info" type="submit" ng-click="onUnSelectAll()">全部取消</button>
+        <button class="btn btn-sm btn-primary" type="submit" ng-click="onSaveEdit()">保存</button>
+        <button class="btn btn-sm btn-default" type="button" ng-click="onCancelClick()">关闭</button>
+    </div>
+
+</div>

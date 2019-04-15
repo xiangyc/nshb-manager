@@ -1,0 +1,299 @@
+<div class="modal-content" ng-init="init()">
+
+    <div class="modal-header">
+        <button type="button" ng-click="onCancelClick()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><strong>商家详情</strong></h4>
+    </div>
+
+    <div class="modal-body">
+        <div class="con_row">
+            <tr class="detail-row">
+				<td colspan="8">
+					<div class="table-detail">
+						<div class="row">
+							<div class="col-xs-12 col-sm-2">
+								<div class="text-center" style="margin-left:30px;">
+									<img class="img-thumbnail-180" ng-src="{{member.headIcon}}" />
+									<br/><br/>
+									<div class="label label-info label-xlg arrowed-in arrowed-in-right" style="width:120px;">
+										<div class="inline position-relative">
+											<a class="user-title-label">
+												<i class="ace-icon fa fa-circle light-green"></i>
+                                                &nbsp;
+												<span class="white">{{member.nickName}}</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-xs-12 col-sm-5">
+								<div class="space visible-xs"></div>
+
+								<div class="profile-user-info profile-user-info-striped" style="margin-left:61px;">
+
+									<div class="profile-info-row">
+										<div class="profile-info-name"> 用户Id </div>
+
+										<div class="profile-info-value">
+											<span>{{member.id}}</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<div class="profile-info-name"> 昵称 </div>
+
+										<div class="profile-info-value">
+											<span>{{member.nickName}}</span>
+										</div>
+									</div>
+
+                                    <div class="profile-info-row">
+										<div class="profile-info-name"> 姓名 </div>
+
+										<div class="profile-info-value">
+											<span>{{member.realName}}</span>
+										</div>
+
+									</div>
+									<div class="profile-info-row">
+										<div class="profile-info-name"> 手机号 </div>
+
+										<div class="profile-info-value">
+											<span>{{member.mobile}}</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<div class="profile-info-name"> 性别 </div>
+
+										<div class="profile-info-value">
+											<span>{{member.sex | decode:0:'女':1:'男':2:'女'}}</span>
+										</div>
+									</div>
+
+                                    <div class="profile-info-row">
+										<div class="profile-info-name"> 生日 </div>
+
+										<div class="profile-info-value">
+											<span>{{member.birthday | date : 'yyyy-MM-dd'}}</span>
+										</div>
+									</div>
+
+                                    <div class="profile-info-row">
+										<div class="profile-info-name"> 会员状态 </div>
+
+										<div class="profile-info-value">
+											<span>{{member.status | decode:0:'封号':1:'正常':'正常'}}</span>
+										</div>
+									</div>
+                                    <div class="profile-info-row">
+										<div class="profile-info-name"> 注册ip </div>
+
+										<div class="profile-info-value">
+											<span>{{member.registeIp}}</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<div class="profile-info-name"> QQ </div>
+
+										<div class="profile-info-value">
+											<span ng-if="member.qqId != null"><strong>已绑定</strong></span>
+											<span ng-if="member.qqId == null"><strong>未绑定</strong></span>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+
+                            <div class="col-xs-12 col-sm-5">
+								<div class="space visible-xs"></div>
+
+								<div class="profile-user-info profile-user-info-striped">
+                                    <div class="profile-info-row">
+										<div class="profile-info-name"> 会员类型 </div>
+
+										<div class="profile-info-value">
+											<span><strong>{{member.type | decode:0:'普通用户':1:'商家'}}</strong></span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<div class="profile-info-name"> 商家名称 </div>
+
+										<div class="profile-info-value">
+											<span>{{member.businessName}}</span>
+										</div>
+									</div>
+
+                                    <div class="profile-info-row">
+										<div class="profile-info-name"> 商家状态 </div>
+
+										<div class="profile-info-value">
+											<span><strong>{{member.authStatus | decode:0:'待审核':1:'审核通过':-1:'审核不通过':2:'免认证'}}</strong></span>
+										</div>
+									</div>
+
+                                    <div class="profile-info-row">
+										<div class="profile-info-name"> 注册时间 </div>
+
+										<div class="profile-info-value">
+											<span>{{member.registeTime | date : 'yyyy-MM-dd'}}</span>
+										</div>
+									</div>
+                                    <div class="profile-info-row">
+										<div class="profile-info-name"> 认证时间 </div>
+
+										<div class="profile-info-value">
+											<span>{{member.authTime | date : 'yyyy-MM-dd'}}</span>
+										</div>
+									</div>
+
+                                    <div class="profile-info-row">
+										<div class="profile-info-name"> 身份证号 </div>
+
+										<div class="profile-info-value">
+											<span>{{member.idCard}}</span>
+										</div>
+
+									</div>
+
+									
+									<div class="profile-info-row">
+										<div class="profile-info-name"> 微信 </div>
+
+										<div class="profile-info-value">
+											<span ng-if="member.wxId != null"><strong>已绑定</strong></span>
+											<span ng-if="member.wxId == null"><strong>未绑定</strong></span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<div class="profile-info-name"> 微博 </div>
+
+										<div class="profile-info-value">
+											<span ng-if="member.wbId != null"><strong>已绑定</strong></span>
+											<span ng-if="member.wbId == null"><strong>未绑定</strong></span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<div class="profile-info-name"> 个性标签 </div>
+
+										<div class="profile-info-value">
+											<span>{{member.interestNames}}</span>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+                            <div class="col-xs-12 col-sm-12" style="margin-top:10px;"><div class="hr hr-18 hr-double dotted"></div></div>
+
+                            <div class="col-xs-12 col-sm-2" style="margin-top:100px;height: 328px;">
+								<div class="text-center">
+                                    <div class="form-group" style="margin-left:35px;margin-bottom:30px;" ng-click="enable(member.id,member.status)">
+                                        <button type="button" class="btn btn-white btn-success {{member.status | decode:0:'':1:'disabled'}}"><i class="ace-icon fa fa-list"></i><strong>启 用</strong></button>
+                                    </div>
+                                    <div class="form-group" style="margin-left:35px;" ng-click="forbid(member.id,member.status)">
+                                        <button type="button" class="btn btn-white btn-info {{member.status | decode:0:'disabled':1:''}}"><i class="ace-icon fa fa-list"></i><strong>禁 用</strong></button>
+                                    </div>
+								</div>
+							</div>
+							
+							<div class="col-xs-12 col-sm-5">
+								<div class="space visible-xs"></div>
+
+								<div class="profile-user-info profile-user-info-striped" style="margin-left:63px;">
+                                    <div class="profile-info-row">
+										<div class="profile-info-name" style="width:100px;text-align:center"> 身份证正面 </div>
+
+										<div class="profile-info-value">
+											<span><img class="img-thumbnail-320" ng-src="{{member.idCardFace}}" /></span>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+                            <div class="col-xs-12 col-sm-5">
+								<div class="space visible-xs"></div>
+
+								<div class="profile-user-info profile-user-info-striped">
+                                    <div class="profile-info-row">
+										<div class="profile-info-name" style="width:100px;text-align:center"> 身份证反面 </div>
+
+										<div class="profile-info-value">
+											<span><img class="img-thumbnail-320" ng-src="{{member.idCardBack}}" /></span>
+										</div>
+									</div>
+
+								</div>
+							</div>
+							
+							<div class="col-xs-12 col-sm-5">
+								<div class="space visible-xs"></div>
+
+								<div class="profile-user-info profile-user-info-striped" style="margin-left:63px;">
+                                    <div class="profile-info-row">
+										<div class="profile-info-name" style="width:100px;text-align:center"> 商家标志 </div>
+
+										<div class="profile-info-value">
+											<span><img class="img-thumbnail-320" ng-src="{{member.businessLogo}}" /></span>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+                            <div class="col-xs-12 col-sm-5">
+								<div class="space visible-xs"></div>
+
+								<div class="profile-user-info profile-user-info-striped">
+                                    <div class="profile-info-row">
+										<div class="profile-info-name" style="width:100px;text-align:center"> 营业执照 </div>
+
+										<div class="profile-info-value">
+											<span><img class="img-thumbnail-320" ng-src="{{member.businessLicense}}" /></span>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+                            <div class="col-xs-9" style="width:802px;margin-top:0.4px;margin-left:221px;">
+
+								<div class="profile-user-info profile-user-info-striped">
+
+                                    <div class="profile-info-row">
+										<div class="profile-info-name" style="width:170px;text-align:center"> 详细地址 </div>
+
+										<div class="profile-info-value">
+											<span>{{member.businessAddress}}</span>
+										</div>
+									</div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name" style="width:170px;text-align:center"> 个人简介 </div>
+
+                                        <div class="profile-info-value">
+                                            <span>{{member.introduction}}</span>
+                                        </div>
+                                    </div>
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+        </div>
+    </div>
+
+    <div style="margin-top:50px;">
+    </div>
+
+</div>

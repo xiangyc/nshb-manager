@@ -1,0 +1,33 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" ng-click="onCancelClick()" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		<h4 class="modal-title" id="myModalLabel">
+			<strong>秒抢题目导入</strong>
+		</h4></div>
+		<div class="modal-body"><div class="con_row">
+			<tr class="detail-row"><td colspan="6"><div class="table-detail">
+				<div id="fuelux-wizard-container">
+					<div class="step-content pos-rel">
+						<div class="step-pane active" data-step="1">
+							<form class="form-horizontal">
+								<div class="form-group"><label class="col-sm-2 control-label">
+									<strong>文件：</strong>
+								</label><div class="col-sm-8" class="input-group">
+									<input class="form-control" id="file" type="file" ngf-select ng-model="file" name="file" ngf-accept="'.xls,.xlsx'">
+									<span class="text-danger">注：文件必须不为空</span></div></div>
+								</form>
+								<div class="col-md-offset-3 col-md-9" style="margin-top:60px">
+									<button class="btn btn-sm btn-info" type="submit" ng-click="importExcel()" style="margin-right:15px"><i class="ace-icon fa fa-check bigger-110"></i> 上传</button>
+									<button class="btn btn-sm btn-info" type="reset" ng-click="onCancelClick()"><i class="ace-icon fa fa-undo bigger-110"></i> 取消</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</div>
+</div>
+</div>

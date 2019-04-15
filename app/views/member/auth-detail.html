@@ -1,0 +1,184 @@
+<div class="modal-content" ng-init="init()">
+
+    <div class="modal-header">
+        <button type="button" ng-click="onCancelClick()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><strong>商家认证审核</strong></h4>
+    </div>
+
+    <div class="modal-body">
+        <div class="con_row">
+            <tr class="detail-row">
+				<td colspan="8">
+					<div class="table-detail">
+						<div class="row">
+							<div class="col-xs-12 col-sm-2">
+								<div class="text-center" style="margin-left:40px;">
+									<img height="150" class="img-thumbnail-180" ng-src="{{member.headIcon}}" />
+									<br/><br/>
+									<div class="label label-info label-xlg arrowed-in arrowed-in-right" style="width:120px;">
+										<div class="inline position-relative">
+											<a class="user-title-label">
+												<i class="ace-icon fa fa-circle light-green"></i>
+                                                &nbsp;
+												<span class="white">{{member.nickName}}</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-xs-12 col-sm-5">
+								<div class="space visible-xs"></div>
+
+								<div class="profile-user-info profile-user-info-striped" style="margin-left:63px;">
+                                    <div class="profile-info-row">
+										<div class="profile-info-name"> 姓名 </div>
+
+										<div class="profile-info-value">
+											<span>{{member.realName}}</span>
+										</div>
+
+									</div>
+									<div class="profile-info-row">
+										<div class="profile-info-name"> 手机号 </div>
+
+										<div class="profile-info-value">
+											<span>{{member.mobile}}</span>
+										</div>
+									</div>
+
+                                    <div class="profile-info-row">
+										<div class="profile-info-name"> 会员类型 </div>
+
+										<div class="profile-info-value">
+											<span><strong>{{member.type | decode:0:'普通用户':1:'商家'}}</strong></span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<div class="profile-info-name"> 商家名称 </div>
+
+										<div class="profile-info-value">
+											<span>{{member.businessName}}</span>
+										</div>
+									</div>
+
+                                    <div class="profile-info-row">
+										<div class="profile-info-name"> 认证时间 </div>
+
+										<div class="profile-info-value">
+											<span>{{member.authTime | date : 'yyyy-MM-dd'}}</span>
+										</div>
+									</div>
+
+                                    <div class="profile-info-row">
+										<div class="profile-info-name"> 身份证号 </div>
+
+										<div class="profile-info-value">
+											<span>{{member.idCard}}</span>
+										</div>
+
+									</div>
+
+
+								</div>
+							</div>
+
+                            <div class="col-xs-12 col-sm-5">
+								<div class="space visible-xs"></div>
+
+								<div class="profile-user-info profile-user-info-striped">
+                                    <div class="profile-info-row">
+										<div class="profile-info-name" style="width:100px;text-align:center"> 商家logo </div>
+
+										<div class="profile-info-value">
+											<span><img class="img-thumbnail" style="width:249px;height:191px;" ng-src="{{member.businessLogo}}" /></span>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+                            <div class="col-xs-12 col-sm-12" style="margin-top:20px;"><div class="hr hr-18 hr-double dotted"></div></div>
+
+                            <div class="col-xs-12 col-sm-2" style="margin-top:80px;">
+								<div class="text-center">
+                                    <div class="form-group" style="margin-left:35px;margin-bottom:30px;" ng-click="auditPass(member.id,member.status)">
+                                        <button type="button" class="btn btn-white btn-info"><i class="ace-icon fa fa-list"></i><strong>通 过</strong>&nbsp;&nbsp;</button>
+                                    </div>
+                                    <div class="form-group" style="margin-left:35px;" ng-click="auditNotPass(member.id,member.status)">
+                                        <button type="button" class="btn btn-white btn-warning"><i class="ace-icon fa fa-list"></i><strong>不通过</strong></button>
+                                    </div>
+								</div>
+							</div>
+
+                            <div class="col-xs-12 col-sm-5">
+								<div class="space visible-xs"></div>
+
+								<div class="profile-user-info profile-user-info-striped" style="margin-left:63px;">
+                                    <div class="profile-info-row">
+										<div class="profile-info-name" style="width:100px;text-align:center"> 身份证正面 </div>
+
+										<div class="profile-info-value">
+											<span><img class="img-thumbnail-192" ng-src="{{member.idCardFace}}"/></span>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+                            <div class="col-xs-12 col-sm-5">
+								<div class="space visible-xs"></div>
+
+								<div class="profile-user-info profile-user-info-striped">
+                                    <div class="profile-info-row">
+										<div class="profile-info-name" style="width:100px;text-align:center"> 身份证反面 </div>
+
+										<div class="profile-info-value">
+											<span><img class="img-thumbnail-192" ng-src="{{member.idCardBack}}" /></span>
+										</div>
+									</div>
+
+								</div>
+							</div>
+							
+							<div class="col-xs-12" style="width:802px;">
+								<div class="space visible-xs"></div>
+
+								<div class="profile-user-info profile-user-info-striped" style="margin-left:234px;">
+                                    <div class="profile-info-row">
+										<div class="profile-info-name" style="width:100px;text-align:center"> 营业执照 </div>
+
+										<div class="profile-info-value">
+											<span><img class="img-thumbnail-192" ng-src="{{member.businessLicense}}"/></span>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+                            <div class="col-xs-12" style="width:802px;">
+								<div class="space visible-xs"></div>
+
+								<div class="profile-user-info profile-user-info-striped" style="margin-left:234px;">
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name" style="width:100px;text-align:center"> 不通过原因 </div>
+                                        <div class="profile-info-value">
+											<textarea class="form-control" cols="8" rows="7" maxlength="30" ng-model="auditNote" id="auditNote" placeholder="请输入审核不通过原因,最多30个字"></textarea>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+        </div>
+    </div>
+
+    <div style="margin-top:50px;">
+    </div>
+
+</div>

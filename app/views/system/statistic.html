@@ -1,0 +1,218 @@
+<div class="main-content">
+	<div class="main-content-inner">
+		<!-- #section:basics/content.breadcrumbs -->
+		<div class="ace-settings-container" id="ace-settings-container">
+			<!-- 公共皮肤，框架布局设置skin.html -->
+			<div ng-include="'views/common/skin.html'" ></div>
+			<!-- 公共皮肤，框架布局设置skin.html -->
+		</div>
+
+		<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+			<ul class="breadcrumb">
+				<li>
+					<i class="ace-icon fa fa-home home-icon"></i>
+					<span>后台管理</span>
+				</li>
+
+				<li>
+					<span>统计概览</span>
+				</li>
+			</ul><!-- /.breadcrumb -->
+		</div>
+
+		<div class="page-content" ng-init="init()">
+
+			<div class="row">
+				<div class="col-xs-12">
+					<!-- PAGE CONTENT BEGINS -->
+							<div class="row">
+								<div class="col-sm-5">
+									<div class="widget-box">
+										<div class="widget-header widget-header-flat widget-header-small">
+											<h2 class="widget-title">
+												<i class="ace-icon fa fa-bar-chart-o"></i>
+												会员统计
+											</h2>
+										</div>
+
+										<div class="widget-body" style="height:200px;margin-top:30px;" align="center">
+													<!-- #section:pages/dashboard.infobox -->
+											<div class="infobox infobox-green infobox-dark" style="width:313px;">
+												<div class="infobox-icon">
+													<i class="ace-icon fa fa-comments"></i>
+												</div>
+
+												<div class="infobox-data">
+													<div class="infobox-data-number">+{{platform.yesterdayRegisterCount || 0}}个</div>
+													<div class="infobox-content"><strong>昨日增加会员数</strong></div>
+												</div>
+											</div>
+
+											<div class="infobox infobox-blue infobox-dark" style="width:313px;">
+												<div class="infobox-icon">
+													<i class="ace-icon fa fa-twitter"></i>
+												</div>
+
+												<!-- /section:pages/dashboard.infobox.sparkline -->
+												<div class="infobox-data">
+													<div class="infobox-data-number">{{platform.registerCount || 0}}个</div>
+													<div class="infobox-content"><strong>累计会员数</strong></div>
+												</div>
+											</div>
+
+											<div class="infobox infobox-orange infobox-dark" style="width:313px;margin-top:3px;">
+												<div class="infobox-icon">
+													<i class="ace-icon fa fa-shopping-cart"></i>
+												</div>
+
+												<div class="infobox-data">
+													<div class="infobox-data-number">+{{platform.yesterdayAuthCount || 0}}家</div>
+													<div class="infobox-content"><strong>昨日增加商家数</strong></div>
+												</div>
+											</div>
+
+											<div class="infobox infobox-pink infobox-dark" style="width:313px;margin-top:3px;">
+												<div class="infobox-icon">
+													<i class="ace-icon fa fa-envelope-o"></i>
+												</div>
+
+												<div class="infobox-data">
+													<div class="infobox-data-number">{{platform.authCount || 0}}家</div>
+													<div class="infobox-content"><strong>累计商家数</strong></div>
+												</div>
+											</div>
+
+										</div><!-- /.widget-body -->
+									</div><!-- /.widget-box -->
+								</div><!-- /.col -->
+
+								<div class="col-sm-5" style="margin-left:50px;">
+									<div class="widget-box">
+										<div class="widget-header widget-header-flat widget-header-small">
+											<h2 class="widget-title">
+												<i class="ace-icon fa fa-star orange"></i>
+												红包统计
+											</h2>
+										</div>
+
+										<div class="widget-body" style="height:200px;margin-top:30px;" align="center">
+													<!-- #section:pages/dashboard.infobox -->
+													<div class="infobox infobox-green" style="width:210px;">
+														<div class="infobox-icon">
+															<i class="ace-icon fa fa-comments"></i>
+														</div>
+
+														<div class="infobox-data">
+															<span class="infobox-data-number">{{platform.redPacketsCount || 0}}个</span>
+															<div class="infobox-content"><strong>累计发红包个数</strong></div>
+														</div>
+													</div>
+
+													<div class="infobox infobox-blue" style="width:210px;">
+														<div class="infobox-icon">
+															<i class="ace-icon fa fa-twitter"></i>
+														</div>
+
+														<div class="infobox-data">
+															<span class="infobox-data-number">{{platform.redPacketsMoney || 0 | currency :'￥'}}</span>
+															<div class="infobox-content"><strong>累计发红包金额</strong></div>
+														</div>
+													</div>
+
+													<div class="infobox infobox-pink" style="width:210px;">
+														<div class="infobox-icon">
+															<i class="ace-icon fa fa-shopping-cart"></i>
+														</div>
+
+														<div class="infobox-data">
+															<span class="infobox-data-number">{{platform.returnRedPacketsMoney || 0 | currency :'￥'}}</span>
+															<div class="infobox-content"><strong>累计退红包金额</strong></div>
+														</div>
+													</div>
+
+													<div class="infobox infobox-red" style="width:210px;margin-top:2px;">
+														<div class="infobox-icon">
+															<i class="ace-icon fa fa-flask"></i>
+														</div>
+
+														<div class="infobox-data">
+															<span class="infobox-data-number">{{platform.yesterdayRedPacketsCount || 0}}个</span>
+															<div class="infobox-content"><strong>昨日发红包个数</strong></div>
+														</div>
+												</div>
+
+												<div class="infobox infobox-orange2" style="width:210px;margin-top:2px;">
+											<!-- #section:pages/dashboard.infobox.sparkline -->
+													<div class="infobox-icon">
+														<i class="ace-icon fa fa-envelope-o"></i>
+													</div>
+
+													<!-- /section:pages/dashboard.infobox.sparkline -->
+													<div class="infobox-data">
+														<span class="infobox-data-number">{{platform.yesterdayRedPacketsMoney || 0 | currency :'￥'}}</span>
+														<div class="infobox-content"><strong>昨日发红包金额</strong></div>
+													</div>
+												</div>
+
+												<div class="infobox infobox-blue2" style="width:210px;margin-top:2px;">
+													<div class="infobox-icon">
+														<i class="ace-icon fa fa-barcode"></i>
+													</div>
+
+													<div class="infobox-data">
+														<span class="infobox-data-number">{{platform.yesterdayReturnRedPacketsMoney || 0 | currency :'￥'}}</span>
+														<div class="infobox-content"><strong>昨日退红包金额</strong></div>
+													</div>
+
+												</div>
+
+										</div><!-- /.widget-body -->
+									</div><!-- /.widget-box -->
+								</div><!-- /.col -->
+
+
+								<div class="col-sm-5" style="margin-top:50px;">
+									<div class="widget-box">
+										<div class="widget-header widget-header-flat widget-header-small">
+											<h2 class="widget-title">
+												<i class="ace-icon fa fa-tachometer"></i>
+												账户资产统计
+											</h2>
+										</div>
+
+										<div class="widget-body" style="height:200px;margin-top:30px;">
+													<!-- #section:pages/dashboard.infobox -->
+													<div class="center">
+														<span class="btn btn-app btn-sm btn-yellow no-hover" style="width:207px;height:100px;">
+															<span class="line-height-1 bigger-170"> <font style="font-size:18px;"> {{platform.financeAccountMoney || 0 | currency :'￥'}}</font> </span>
+
+															<br />
+															<span class="line-height-1 smaller-90"> <strong>累计会员余额</strong> </span>
+														</span>
+
+														<span class="btn btn-app btn-sm btn-success no-hover" style="width:207px;height:100px;">
+															<span class="line-height-1 bigger-170"> <font style="font-size:18px;"> {{platform.yesterdayWithdrawApplyMoney || 0 | currency :'￥'}}</font> </span>
+
+															<br />
+															<span class="line-height-1 smaller-90"><strong>昨日提现金额</strong> </span>
+														</span>
+
+														<span class="btn btn-app btn-sm btn-primary no-hover" style="width:207px;height:100px;">
+															<span class="line-height-1 bigger-170"> <font style="font-size:18px;"> {{platform.withdrawApplyMoney || 0 | currency :'￥'}}</font> </span>
+
+															<br />
+															<span class="line-height-1 smaller-90"> <strong>累计提现金额</strong> </span>
+														</span>
+													</div>
+
+										</div><!-- /.widget-body -->
+									</div><!-- /.widget-box -->
+								</div><!-- /.col -->
+
+							</div><!-- /.row -->
+							<!-- PAGE CONTENT ENDS -->
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /.page-content -->
+	</div>
+</div><!-- /.main-content -->

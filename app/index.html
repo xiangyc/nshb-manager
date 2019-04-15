@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta charset="utf-8" />
+		<title>123红包 - 管理后台系统</title>
+		<meta name="description" content="Static &amp; Dynamic Tables" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<link rel="stylesheet" href="styles/css/bootstrap.css" />
+		<link rel="stylesheet" href="styles/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+		<link rel="stylesheet" href="styles/css/common.css" />
+		<link rel="stylesheet" href="bower_components/angular-ivh-treeview/dist/ivh-treeview.css" />
+		<link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.css" />
+		<link rel="stylesheet" href="vendors/bootstrap-timepicker/css/bootstrap-datetimepicker.css" />
+		<link rel="stylesheet" href="vendors/bootstrap-timepicker/css/bootstrap-datetimepicker.min.css" />
+		<link rel="stylesheet" href="vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" />
+		<link rel="stylesheet" href="vendors/jquery-colorbox/example1/colorbox.css" />
+	</head>
+
+	<body class="no-skin">
+
+	<style>
+	    .alert {
+	        position:fixed;
+	        right:0;
+	        min-width:200px;
+	        z-index:10001;
+	    }
+		.ivh-treeview-node-content{padding-left:40px;}
+	</style>
+	<uib-alert ng-repeat="alert in alerts" dismiss-on-timeout="2000" type="{{alert.type}}" close="closeAlert()"> <div ng-bind="alert.msg"></div></uib-alert>
+
+	<!--公共头部layout.html -->
+	<div ng-include="'views/common/layout.html'" id="layoutDiv"></div>
+
+	<div class="main-container ace-save-state" id="main-container">
+		<script type="text/javascript">
+			try{ace.settings.loadState('main-container')}catch(e){}
+		</script>
+
+		<!--公共菜单menu.html -->
+		<div ng-include="'views/common/menu.html'"></div>
+
+		<!--页面内容部分-->
+		<div class="wrapper">
+		    <ui-view style="min-height:100%;"></ui-view>
+		</div>
+	</div><!-- /.main-container -->
+
+	<!-- jquery:js -->
+	<script src="vendors/jquery/dist/jquery.js"></script>
+
+	<!-- bower:js -->
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.js"></script>
+	<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+	<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	<script src="bower_components/angular-confirm-modal/angular-confirm.js"></script>
+	<script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+	<script src="bower_components/angular-ivh-treeview/dist/ivh-treeview.js"></script>
+	<script src="bower_components/lodash/dist/lodash.compat.js"></script>
+	<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+	<!-- assets:js -->
+	<script src="vendors/js/ace-extra.js"></script>
+
+	<!-- components:js -->
+	<script src="vendors/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="vendors/bootstrap-timepicker/js/bootstrap-datetimepicker.js"></script>
+	<script src="vendors/bootstrap-timepicker/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="vendors/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+	<script src="vendors/jquery-colorbox/jquery.colorbox.js"></script>
+
+	<!-- build:js({.tmp,app}) scripts/scripts.js -->
+	<script src="scripts/app.js"></script>
+	<script src="scripts/config.js"></script>
+	<script src="scripts/utils/utils.js"></script>
+
+	<!-- filter过滤 -->
+	<script src="scripts/filters/common-filters.js"></script>
+	<script src="scripts/directives/angular-waterfall.js"></script>
+	<script src="scripts/directives/repeat.js"></script>
+
+	<!-- 服务 -->
+	<script src="scripts/services/ui-service.js"></script>
+	<script src="scripts/services/alert-service.js"></script>
+	<script src="scripts/services/login-service.js"></script>
+	<script src="scripts/services/staff-service.js"></script>
+	<script src="scripts/services/role-service.js"></script>
+	<script src="scripts/services/member-service.js"></script>
+	<script src="scripts/services/coupon-service.js"></script>
+	<script src="scripts/services/tradelog-service.js"></script>
+	<script src="scripts/services/collect-service.js"></script>
+	<script src="scripts/services/feedback-service.js"></script>
+	<script src="scripts/services/message-service.js"></script>
+	<script src="scripts/services/redpacket-service.js"></script>
+	<script src="scripts/services/member-auth-service.js"></script>
+	<script src="scripts/services/withdraw-service.js"></script>
+	<script src="scripts/services/order-service.js"></script>
+	<script src="scripts/services/interest-service.js"></script>
+	<script src="scripts/services/system-message-service.js"></script>
+	<script src="scripts/services/member-statistics-service.js"></script>
+	<script src="scripts/services/region-service.js"></script>
+	<script src="scripts/services/mobile-send-service.js"></script>
+	<script src="scripts/services/index-banner-service.js"></script>
+	<script src="scripts/services/redpacket-collect-service.js"></script>
+	<script src="scripts/services/about-service.js"></script>
+	<script src="scripts/services/contact-service.js"></script>
+	<script src="scripts/services/ticket-service.js"></script>
+	<script src="scripts/services/export-service.js"></script>
+
+	<!-- 控制器 -->
+	<script src="scripts/controllers/system/login.js"></script>
+	<script src="scripts/controllers/system/index.js"></script>
+	<script src="scripts/controllers/system/menu.js"></script>
+	<script src="scripts/controllers/system/staff-list.js"></script>
+	<script src="scripts/controllers/system/role-list.js"></script>
+	<script src="scripts/controllers/system/role-staff.js"></script>
+	<script src="scripts/controllers/member/member-list.js"></script>
+	<script src="scripts/controllers/member/member-detail.js"></script>
+	<script src="scripts/controllers/coupon/coupon-list.js"></script>
+	<script src="scripts/controllers/finance/tradelog-list.js"></script>
+	<script src="scripts/controllers/message/collect-list.js"></script>
+	<script src="scripts/controllers/message/feedback-list.js"></script>
+	<script src="scripts/controllers/message/message-list.js"></script>
+	<script src="scripts/controllers/redpackets/redpacket-send-list.js"></script>
+	<script src="scripts/controllers/redpackets/redpacket-receive-list.js"></script>
+	<script src="scripts/controllers/member/member-auth-list.js"></script>
+	<script src="scripts/controllers/finance/withdraw-list.js"></script>
+	<script src="scripts/controllers/member/member-auth-detail.js"></script>
+	<script src="scripts/controllers/member/member-interest-list.js"></script>
+	<script src="scripts/controllers/member/member-auth.js"></script>
+	<script src="scripts/controllers/member/auth-detail.js"></script>
+	<script src="scripts/controllers/redpackets/redpacket-apply-list.js"></script>
+	<script src="scripts/controllers/finance/order-list.js"></script>
+	<script src="scripts/controllers/member/interest-list.js"></script>
+	<script src="scripts/controllers/message/system-message-list.js"></script>
+	<script src="scripts/controllers/member/member-statistics-list.js"></script>
+	<script src="scripts/controllers/system/region-list.js"></script>
+	<script src="scripts/controllers/member/mobile-send-list.js"></script>
+	<script src="scripts/controllers/quizzes/redpacket-count-down-list.js"></script>
+	<script src="scripts/controllers/quizzes/redpacket-collect-list.js"></script>
+	<script src="scripts/controllers/coupon/index-banner-list.js"></script>
+	<script src="scripts/controllers/system/about.js"></script>
+	<script src="scripts/controllers/system/contact.js"></script>
+	<script src="scripts/controllers/coupon/ticket-list.js"></script>
+	<script src="scripts/controllers/coupon/ticket-log-list.js"></script>
+	<script src="scripts/controllers/coupon/tag-list.js"></script>
+	<script src="scripts/controllers/quizzes/redpacket-question-list.js"></script>
+
+	</body>
+
+</html>

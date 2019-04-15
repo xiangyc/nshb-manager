@@ -1,0 +1,149 @@
+<div class="main-content">
+	<div class="main-content-inner">
+		<div class="ace-settings-container" id="ace-settings-container">
+			<!-- 公共皮肤，框架布局设置skin.html -->
+			<div ng-include="'views/common/skin.html'" ></div>
+			<!-- 公共皮肤，框架布局设置skin.html -->
+		</div>
+		<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+			<ul class="breadcrumb">
+				<li>
+					<i class="ace-icon fa fa-home home-icon"></i>
+					<span>后台管理</span>
+				</li>
+
+				<li>
+					<span>运营管理</span>
+				</li>
+			</ul><!-- /.breadcrumb -->
+		</div>
+
+		<div class="page-content">
+			<div class="row">
+				<div class="col-xs-12">
+					<!-- PAGE CONTENT BEGINS -->
+
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="page-header">
+								<form class="form-inline">
+
+						            <div class="input-group">
+										<span class="input-group-addon">目标</span>
+						                <select class="chosen-select form-control" id="targetRange" ng-model="targetRange" name="targetRange" style="width:120px;">
+											<option value="">请选择</option>
+				                            <option value="0">全部用户</option>
+				                            <option value="1">条件用户</option>
+						                </select>
+						            </div>
+						            <div class="input-group" style="margin-left:20px;">
+										<span class="input-group-addon">年龄</span>
+						                <select class="chosen-select form-control" id="ageRange" ng-model="ageRange" name="ageRange" style="width:120px;">
+											<option value="">请选择</option>
+				                            <option value="0">18-25岁</option>
+				                            <option value="1">25-35岁</option>
+											<option value="2">35-45岁</option>
+                                            <option value="3">45岁以上</option>
+						                </select>
+						            </div>
+
+						            <div class="input-group" style="margin-left:20px;">
+										<span class="input-group-addon">性别</span>
+						                <select class="chosen-select form-control" id="sex" ng-model="sex" name="sex" style="width:120px;">
+											<option value="">请选择</option>
+				                            <option value="1">男</option>
+				                            <option value="0">女</option>
+				                        </select>
+						            </div>
+
+						            <div class="input-group" style="margin-left:20px;">
+										<span class="input-group-addon">用户类型</span>
+						                <select class="chosen-select form-control" id="type" ng-model="type" name="type" style="width:120px;">
+											<option value="">请选择</option>
+				                            <option value="0">普通用户</option>
+				                            <option value="1">商家</option>
+						                </select>
+						            </div>
+
+						            <div class="form-group" style="margin-left:100px;margin-right:15px;">
+						                <button type="button" class="btn btn-white btn-success" ng-click="query()"><i class="ace-icon fa fa-search nav-search-icon"></i><strong>查询</strong></button>
+						            </div>
+						            <div class="form-group">
+						                <button type="button" class="btn btn-white btn-info" ng-click="reset()"><i class=" ace-icon fa fa-undo"></i><strong>重置</strong></button>
+						            </div>
+						            <div class="form-group" style="margin-left:30px;">
+						                <button type="button" class="btn btn-white btn-danger" ng-click="openSendSystemMessageWin()"><i class="ace-icon fa fa-cogs"></i><strong>配置消息</strong></button>
+						            </div>
+						        </form>
+							</div><!-- /.page-header -->
+
+							<div class="table-header">
+								系统消息列表
+							</div>
+							<div>
+								<table class="table table-striped table-bordered table-hover" ng-init="getPage()">
+									<thead>
+										<tr>
+											<th>序号</th>
+											<th>目标范围</th>
+											<th>年龄范围</th>
+											<th>性别</th>
+											<th>用户类型</th>
+											<th>消息内容</th>
+											<th><i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>创建时间</th>
+											<th><i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>发送时间</th>
+											<th>状态</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										<tr ng-repeat="row in data" repeat-finish align="center">
+											<td>{{($index+1) + (currentPage - 1) * itemsPerPage}}</td>
+											<td><div class="label {{row.targetRange | decode:0:'label-info':1:'label-purple'}}" style="width:60px;">{{row.targetRange | decode:0:'全部用户':1:'条件用户'}}</div></td>
+											<td>{{row.ageRange | decode:0:'18-25岁':1:'25-35岁':2:'35-45岁':3:'45岁以上'}}</td>
+											<td>{{row.sex | decode:0:'女':1:'男':2:'女'}}</td>
+											<td>{{row.type | decode:0:'普通会员':1:'商户'}}</td>
+											<td align="left" title="{{row.content}}">{{row.content}}</td>
+											<td>{{row.createTime | date : 'yyyy-MM-dd HH:mm:ss'}}</td>
+											<td>{{row.sendTime | date : 'yyyy-MM-dd HH:mm:ss'}}</td>
+											<td>
+												<div class="label {{row.status | decode:0:'label-success':1:'label-danger'}}" style="width:60px;">
+					                            	{{row.status | decode:0:'待推送':1:'已推送'}}
+					                        	</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<div ng-show="totalItems > 0">
+					            <h5 style="font-size:14px;float:left;">
+					                <select ng-model="viewby" ng-change="setItemsPerPage(viewby)">
+					                    <option>10</option>
+					                    <option>20</option>
+					                    <option>30</option>
+					                </select>&nbsp;条记录 总共{{totalItems}}条记录
+								</h5>
+					            <uib-pagination
+					                    total-items="totalItems"
+					                    ng-model="currentPage"
+					                    max-size="5"
+					                    boundary-links="true"
+					                    force-ellipses="false"
+					                    first-text="首页"
+					                    last-text="末页"
+					                    previous-text="上一页"
+					                    next-text="下一页"
+					                    num-pages="numPages"
+					                    ng-change="pageChanged()"
+					                    items-per-page="itemsPerPage"
+					                    class="pagination-sm" style="float:right;margin:0;">
+					            </uib-pagination>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- PAGE CONTENT ENDS -->
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /.page-content -->
+	</div>
+</div><!-- /.main-content -->

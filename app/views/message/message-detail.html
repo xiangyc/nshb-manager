@@ -1,0 +1,67 @@
+<div class="modal-content" ng-init="init()">
+
+    <div class="modal-header">
+        <button type="button" ng-click="onCancelClick()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><strong>消息详情</strong></h4>
+    </div>
+
+    <div class="modal-body" style="height:300px;">
+        <div class="con_row">
+            <tr class="detail-row">
+				<td colspan="8">
+                    <div class="col-xs-12 col-sm-12">
+                        <div class="space visible-xs"></div>
+
+                        <div class="profile-user-info profile-user-info-striped">
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> 标题 </div>
+
+                                <div class="profile-info-value">
+                                    <span>{{message.title}}</span>
+                                </div>
+                            </div>
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> 发送时间 </div>
+
+                                <div class="profile-info-value">
+                                    <span>{{message.createTime | date : 'yyyy-MM-dd HH:mm:ss'}}</span>
+                                </div>
+                            </div>
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> 读取时间 </div>
+
+                                <div class="profile-info-value">
+                                    <span>{{message.readTime | date : 'yyyy-MM-dd HH:mm:ss'}}</span>
+                                </div>
+                            </div>
+
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> 消息状态 </div>
+
+                                <div class="profile-info-value">
+                                    <span>{{message.status | decode:0:'未读':1:'已读'}}</span>
+                                </div>
+                            </div>
+
+                            <div class="profile-info-row" style="height:130px;">
+                                <div class="profile-info-name"> 消息内容 </div>
+
+                                <div class="profile-info-value">
+                                    <span>{{message.content}}</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+				</td>
+			</tr>
+        </div>
+    </div>
+
+    <div style="margin-top:50px;">
+    </div>
+
+</div>

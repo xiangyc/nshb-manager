@@ -1,0 +1,136 @@
+<div class="main-content">
+	<div class="main-content-inner">
+		<div class="ace-settings-container" id="ace-settings-container">
+			<!-- 公共皮肤，框架布局设置skin.html -->
+			<div ng-include="'views/common/skin.html'" ></div>
+			<!-- 公共皮肤，框架布局设置skin.html -->
+		</div>
+		<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+			<ul class="breadcrumb">
+				<li>
+					<i class="ace-icon fa fa-home home-icon"></i>
+					<span>后台管理</span>
+				</li>
+
+				<li>
+					<span>系统设置</span>
+				</li>
+			</ul><!-- /.breadcrumb -->
+		</div>
+
+		<div class="page-content">
+			<div class="row">
+				<div class="col-xs-12">
+					<!-- PAGE CONTENT BEGINS -->
+
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="page-header">
+								<form class="form-inline">
+									<div class="input-group">
+										<span class="input-group-addon">账号</span>
+										<input class="form-control" ng-model="loginName" type="text" id="loginName" placeholder="请输入账号" maxlength="20" />
+									</div>
+									<div class="input-group" style="margin-left:20px;">
+										<span class="input-group-addon">姓名</span>
+										<input class="form-control" ng-model="name" type="text" id="name" placeholder="请输入姓名" maxlength="20" />
+									</div>
+									<div class="input-group" style="margin-left:20px;">
+										<span class="input-group-addon">手机号</span>
+										<input class="form-control" ng-model="mobile" type="text" id="mobile" placeholder="请输入手机号" maxlength="20" />
+									</div>
+
+						            <div class="form-group" style="margin-left:100px;margin-right:15px;">
+						                <button type="button" class="btn btn-white btn-success" ng-click="query()"><i class="ace-icon fa fa-search nav-search-icon"></i><strong>查询</strong></button>
+						            </div>
+						            <div class="form-group">
+						                <button type="button" class="btn btn-white btn-info" ng-click="reset()"><i class=" ace-icon fa fa-undo"></i><strong>重置</strong></button>
+						            </div>
+
+									<div align="right">
+						                <button type="button" class="btn btn-white btn-info" ng-click="addStaff('md')"><i class="ace-icon glyphicon glyphicon-plus"></i><strong>新增</strong></button>
+						            </div>
+
+						        </form>
+							</div><!-- /.page-header -->
+
+							<div class="table-header">
+								用户列表
+							</div>
+							<div>
+								<table class="table table-striped table-bordered table-hover" ng-init="getPage()">
+									<thead>
+										<tr>
+											<th>序号</th>
+											<th>员工账号</th>
+											<th>姓名</th>
+											<th>手机号码</th>
+											<th>职位</th>
+											<th>
+												<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+												创建时间
+											</th>
+											<th>状态</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										<tr ng-repeat="row in data" repeat-finish align="center">
+											<td>{{($index+1) + (currentPage - 1) * itemsPerPage}}</td>
+											<td>{{row.loginName}}</td>
+							                <td>{{row.name}}</td>
+							                <td>{{row.mobile}}</td>
+							                <td>{{row.position}}</td>
+							                <td>{{row.createTime | date : 'yyyy-MM-dd HH:mm:ss'}}</td>
+							                <td>
+							                    <div class="label {{row.status | decode:1:'label-success':2:'label-warning':0:'label-danger':'label-success'}}" style="width:60px;">
+							                        {{row.status | decode:1:'正常':2:'禁用':0:'已删除':'正常'}}
+							                    </div>
+											</td>
+											<td>
+							                    <div class="btn-group" role="group">
+							                        <button class="btn btn-white btn-default btn-bold" ng-click="onEditStaffClick(row.id)"><i class="fa fa-edit"></i> 编辑</button>
+							                        <button ng-if="row.status == 1" class="btn btn-white btn-warning btn-bold" ng-click="deactiveStaff(row.id)" style="margin-left:4px;"><i class="fa fa-lock"></i> 禁用</button>
+							                        <button ng-if="row.status != 1" class="btn btn-white btn-success btn-bold" ng-click="activeStaff(row.id)" style="margin-left:4px;"><i class="fa fa-unlock"></i> 启用</button>
+							                        <button class="btn btn-white btn-danger btn-bold" ng-click="onDeleteStaffClick(row.id)"  style="margin-left:4px;"><i class="fa fa-trash"></i> 删除</button>
+							                        <button class="btn btn-white btn-default btn-bold" ng-click="resetPwd(row.id)"  style="margin-left:4px;"><i class="ace-icon fa fa-list"></i>重置密码</button>
+							                    </div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<div ng-show="totalItems > 0">
+					            <h5 style="font-size:14px;float:left;">
+					                <select ng-model="viewby" ng-change="setItemsPerPage(viewby)">
+					                    <option>10</option>
+					                    <option>20</option>
+					                    <option>30</option>
+					                </select>&nbsp;条记录 总共{{totalItems}}条记录
+								</h5>
+					            <uib-pagination
+					                    total-items="totalItems"
+					                    ng-model="currentPage"
+					                    max-size="5"
+										rotate="false"
+					                    boundary-links="true"
+					                    force-ellipses="false"
+					                    first-text="首页"
+					                    last-text="末页"
+					                    previous-text="上一页"
+					                    next-text="下一页"
+					                    num-pages="numPages"
+					                    ng-change="pageChanged()"
+					                    items-per-page="itemsPerPage"
+					                    class="pagination-sm" style="float:right;margin:0">
+					            </uib-pagination>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- PAGE CONTENT ENDS -->
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /.page-content -->
+	</div>
+</div><!-- /.main-content -->

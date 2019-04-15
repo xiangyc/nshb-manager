@@ -1,0 +1,64 @@
+<div class="modal-content" style="height:390px;">
+
+    <div class="modal-header">
+        <button type="button" ng-click="onCancelClick()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><strong>秒抢活动设置</strong></h4>
+    </div>
+
+    <div class="modal-body">
+        <div class="con_row">
+            <tr class="detail-row">
+				<td colspan="5">
+					<div class="table-detail">
+						<div id="fuelux-wizard-container">
+							<div class="step-content pos-rel">
+								<div class="step-pane active" data-step="1">
+									<form class="form-horizontal" ng-init="defultConfigValue()">
+										<div class="container">
+										    <label>秒抢活动是显示还是隐藏？</label>
+										</div>
+										<div class="container" style="margin-top: 20px;">
+										    <label class="radio" style="margin-left:20px;"><input type="radio" id="radio1" name="setRedShow" value="1">显示</label>
+										</div>
+										<div class="container" style="margin-top: 20px;">
+										    <label class="radio" style="margin-left:20px;"><input type="radio" id="radio0" name="setRedShow" value="0">隐藏</label>
+										</div>
+
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+        </div>
+    </div>
+
+    <div class="col-md-offset-3 col-md-9" style="margin-left:210px;">
+        <button class="btn btn-sm btn-info" type="submit" ng-click="submit()" style="margin-right:15px;">
+            <i class="ace-icon fa fa-check bigger-110"></i>
+            保存
+        </button>
+        <button class="btn btn-sm btn-info" type="reset" ng-click="onCancelClick()">
+            <i class="ace-icon fa fa-undo bigger-110"></i>
+            取消
+        </button>
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+
+	jQuery(function($) {
+		$('.date-picker').datepicker({
+    		autoclose: true,
+    		todayHighlight: true,
+            format: "yyyy-mm-dd"
+    	})
+    	.next().on(ace.click_event, function(){
+    		$(this).prev().focus();
+    	});
+	});
+
+</script>

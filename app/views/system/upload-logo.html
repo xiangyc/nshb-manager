@@ -1,0 +1,45 @@
+<div class="modal-content" ng-init="init()">
+
+    <div class="modal-header">
+        <button type="button" ng-click="onCancelClick()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><strong>上传地市Logo</strong></h4>
+    </div>
+
+    <form class="form-horizontal" id="myForm" name="myForm" enctype="multipart/form-data" style="height:430px;">
+
+      <div class="col-xs-12 col-sm-12" style="margin-top:20px;text-align:center;">
+          <div class="profile-user-info profile-user-info-striped">
+              <div class="profile-info-row">
+                  <div class="profile-info-name"> 地市名称 </div>
+                  <div class="profile-info-value">
+                      <span>{{region.province.name}}{{region.regionName}}</span>
+                  </div>
+              </div>
+
+              <div class="profile-info-row" style="height:230px;">
+                  <div class="profile-info-name"> logo图片 </div>
+
+                  <div class="profile-info-value">
+                      <img ng-if="region.sponsorLogo == null" height="180px" src="../../images/image.png" />
+                      <img ng-if="region.sponsorLogo != null" height="180px" class="img-thumbnail-180" ng-src="{{region.sponsorLogo}}" />
+                      <input class="form-control" style="height:40px;width:320px;margin-left:50px;margin-top:10px;" id="changeImg" type="file" ng-model="file" name="file" ngf-max-size="1MB">
+                      <p style="margin-top:5px;margin-bottom:10px;"><font style="font-size:12px;color:red;">注：文件类型必须为gif,jpeg,png,jpg. 文件大小不能超过1M</font></p>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    <div class="col-xs-12 col-sm-12" style="margin-top:20px;margin-bottom:30px;margin-left:200px;">
+        <button class="btn btn-sm btn-info" type="submit" ng-click="submit()">
+            <i class="ace-icon fa fa-check bigger-110"></i>
+            保存
+        </button>
+        <button class="btn btn-sm btn-info" type="reset" style="margin-left:50px;" ng-click="onCancelClick()">
+            <i class="ace-icon fa fa-undo bigger-110"></i>
+            取消
+        </button>
+    </div>
+
+    </form>
+
+</div>

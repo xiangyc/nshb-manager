@@ -1,0 +1,76 @@
+<div class="modal-content" style="overflow-y:auto;max-height:690px;min-height:300px;">
+
+    <div class="modal-header">
+        <button type="button" ng-click="onCancelClick()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><strong>分配用户</strong></h4>
+    </div>
+
+    <div class="modal-body" >
+        <div class="con_row con_con mb0">
+            <div class="table-header">
+                用户列表
+            </div>
+            <div>
+                <table class="table table-striped table-bordered table-hover" ng-init="getPage()">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="chkAll" ng-click="selectAll();"></th>
+                            <th>员工账号</th>
+                            <th>姓名</th>
+                            <th>手机号码</th>
+                            <th>职位</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr ng-repeat="row in data" repeat-finish align="center">
+                            <th><input type="checkbox" name="userChk" value="{{row.id}}"  ng-click="selectSatff(row.id, $event)"></th>
+                            <td>{{row.loginName}}</td>
+                            <td>{{row.name}}</td>
+                            <td>{{row.name}}</td>
+                            <td>{{row.position}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div ng-show="totalItems > 0">
+                <h5 style="font-size:14px;float:left;">
+                    <select ng-model="viewby" ng-change="setItemsPerPage(viewby)">
+                        <option>10</option>
+                        <option>20</option>
+                        <option>30</option>
+                    </select>&nbsp;条记录 总共{{totalItems}}条记录
+                </h5>
+                <uib-pagination
+                        total-items="totalItems"
+                        ng-model="currentPage"
+                        max-size="5"
+                        rotate="false"
+                        boundary-links="true"
+                        force-ellipses="false"
+                        first-text="首页"
+                        last-text="末页"
+                        previous-text="上一页"
+                        next-text="下一页"
+                        num-pages="numPages"
+                        ng-change="pageChanged()"
+                        items-per-page="itemsPerPage"
+                        class="pagination-sm" style="float:right; margin:0;">
+                </uib-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12" style="margin-top:15px; text-align:center;margin-bottom:30px;">
+        <div class="hr hr-dotted"></div>
+        <button class="btn btn-sm btn-info" type="submit" ng-click="onSaveEdit()" style="margin-right:15px;">
+            <i class="ace-icon fa fa-check bigger-110"></i>
+            保存
+        </button>
+        <button class="btn btn-sm btn-info" type="reset" ng-click="onCancelClick()">
+            <i class="ace-icon fa fa-undo bigger-110"></i>
+            取消
+        </button>
+    </div>
+
+</div>

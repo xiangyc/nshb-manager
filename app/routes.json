@@ -1,0 +1,193 @@
+[{
+  "name": "login",
+  "url": "/login",
+  "templateUrl": "views/system/login.html",
+  "controller": "LoginCtrl"
+  },
+  {
+    "name": "index",
+    "url": "/index",
+    "templateUrl" : "views/system/statistic.html",
+    "controller": "IndexCtrl"
+  },
+  {
+  "name": "staff-list",
+  "url": "/staff-list",
+  "templateUrl": "views/system/staff-list.html",
+  "controller": "StaffListCtrl"
+  },
+  {
+  "name": "role-list",
+  "url": "/role-list",
+  "templateUrl": "views/system/role-list.html",
+  "controller": "RoleListCtrl"
+  },
+  {
+  "name": "member-list",
+  "url": "/member-list",
+  "templateUrl": "views/member/member-list.html",
+  "controller": "MemberListCtrl"
+  },
+  {
+  "name": "coupon-list",
+  "url": "/coupon-list",
+  "templateUrl": "views/coupon/coupon-list.html",
+  "controller": "CouponListCtrl"
+  },
+  {
+  "name": "message-list",
+  "url": "/message-list",
+  "templateUrl": "views/message/message-list.html",
+  "controller": "MessageCtrl"
+  },
+  {
+  "name": "feedback-list",
+  "url": "/feedback-list",
+  "templateUrl": "views/message/feedback-list.html",
+  "controller": "FeedBackCtrl"
+  },
+  {
+  "name": "collect-list",
+  "url": "/collect-list",
+  "templateUrl": "views/message/collect-list.html",
+  "controller": "CollectCtrl"
+  },
+  {
+  "name": "redpacket-send-list",
+  "url": "/redpacket-send-list",
+  "templateUrl": "views/redpackets/redpacket-send-list.html",
+  "controller": "RedpacketSendCtrl"
+  },
+  {
+  "name": "redpacket-receive-list",
+  "url": "/redpacket-receive-list",
+  "templateUrl": "views/redpackets/redpacket-receive-list.html",
+  "controller": "RedpacketReceiveCtrl"
+  },
+  {
+  "name": "member-auth-list",
+  "url": "/member-auth-list",
+  "templateUrl": "views/member/member-auth-list.html",
+  "controller": "MemberAuthListCtrl"
+  },
+  {
+  "name": "withdraw-list",
+  "url": "/withdraw-list",
+  "templateUrl": "views/finance/withdraw-list.html",
+  "controller": "WithdrawListCtrl"
+  },
+  {
+  "name": "tradelog-list",
+  "url": "/tradelog-list",
+  "templateUrl": "views/finance/tradelog-list.html",
+  "controller": "TradeLogCtrl"
+  },
+  {
+  "name": "member-interest-list",
+  "url": "/member-interest-list",
+  "templateUrl": "views/member/member-interest-list.html",
+  "controller": "MemberInterestListCtrl"
+  },
+  {
+  "name": "member-auth",
+  "url": "/member-auth",
+  "templateUrl": "views/member/member-auth.html",
+  "controller": "MemberAuthCtrl"
+  },
+  {
+  "name": "redpacket-apply-list",
+  "url": "/redpacket-apply-list",
+  "templateUrl": "views/redpackets/redpacket-apply-list.html",
+  "controller": "RedpacketApplyCtrl"
+  },
+  {
+  "name": "order-list",
+  "url": "/order-list",
+  "templateUrl": "views/finance/order-list.html",
+  "controller": "OrderCtrl"
+  },
+  {
+  "name": "interest-list",
+  "url": "/interest-list",
+  "templateUrl": "views/member/interest-list.html",
+  "controller": "InterestListCtrl"
+  },
+  {
+  "name": "system-message-list",
+  "url": "/system-message-list",
+  "templateUrl": "views/message/system-message-list.html",
+  "controller": "SystemMessageListCtrl"
+  },
+  {
+  "name": "member-statistics-list",
+  "url": "/member-statistics-list",
+  "templateUrl": "views/member/member-statistics-list.html",
+  "controller": "MemberStatisticsListCtrl"
+  },
+  {
+  "name": "region-list",
+  "url": "/region-list",
+  "templateUrl": "views/system/region-list.html",
+  "controller": "RegionListCtrl"
+  },
+  {
+  "name": "mobile-send-list",
+  "url": "/mobile-send-list",
+  "templateUrl": "views/member/mobile-send-list.html",
+  "controller": "MobileSendListCtrl"
+  },
+  {
+  "name": "redpacket-count-down-list",
+  "url": "/redpacket-count-down-list",
+  "templateUrl": "views/quizzes/redpacket-count-down-list.html",
+  "controller": "RedpacketCountDownCtrl"
+  },
+  {
+  "name": "redpacket-collect-apply-list",
+  "url": "/redpacket-collect-apply-list",
+  "templateUrl": "views/quizzes/redpacket-collect-apply-list.html",
+  "controller": "RedpacketCollectCtrl"
+  },
+  {
+  "name": "index-banner-list",
+  "url": "/index-banner-list",
+  "templateUrl": "views/coupon/index-banner-list.html",
+  "controller": "IndexBannerListCtrl"
+  },
+  {
+  "name": "redpacket-question-list",
+  "url": "/redpacket-question-list",
+  "templateUrl": "views/quizzes/redpacket-question-list.html",
+  "controller": "RedpacketQuestionCtrl"
+  },
+  {
+  "name": "about-list",
+  "url": "/about-list",
+  "templateUrl": "views/system/about-list.html",
+  "controller": "AboutListCtrl"
+  },
+  {
+  "name": "contact-list",
+  "url": "/contact-list",
+  "templateUrl": "views/system/contact-list.html",
+  "controller": "ContactListCtrl"
+  },
+  {
+  "name": "ticket-list",
+  "url": "/ticket-list",
+  "templateUrl": "views/coupon/ticket-list.html",
+  "controller": "TicketListCtrl"
+  },
+  {
+  "name": "ticket-log-list",
+  "url": "/ticket-log-list",
+  "templateUrl": "views/coupon/ticket-log-list.html",
+  "controller": "TicketLogListCtrl"
+  },
+  {
+  "name": "tag-list",
+  "url": "/tag-list",
+  "templateUrl": "views/coupon/tag-list.html",
+  "controller": "TagListCtrl"
+  }
+]

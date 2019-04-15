@@ -1,0 +1,153 @@
+<div class="main-content">
+	<div class="main-content-inner">
+		<div class="ace-settings-container" id="ace-settings-container">
+			<!-- 公共皮肤，框架布局设置skin.html -->
+			<div ng-include="'views/common/skin.html'" ></div>
+			<!-- 公共皮肤，框架布局设置skin.html -->
+		</div>
+		<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+			<ul class="breadcrumb">
+				<li>
+					<i class="ace-icon fa fa-home home-icon"></i>
+					<span>后台管理</span>
+				</li>
+
+				<li>
+					<span>财务管理</span>
+				</li>
+			</ul><!-- /.breadcrumb -->
+		</div>
+
+		<div class="page-content">
+			<div class="row">
+				<div class="col-xs-12">
+					<!-- PAGE CONTENT BEGINS -->
+
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="page-header">
+								<form class="form-inline">
+									<div class="input-group">
+										<span class="input-group-addon">手机号</span>
+										<input class="form-control" ng-model="mobile" type="text" id="mobile" placeholder="请输入手机号" maxlength="20" />
+									</div>
+									<div class="input-group" style="margin-left:20px;">
+									   <span class="input-group-addon">创建时间</span>
+									   <div class="input-group">
+										   <input class="form-control date-picker" ng-model="startDate" readonly size="12" type="text"/>
+										   <span class="input-group-addon">
+											   <i class="fa fa-calendar bigger-110"></i>
+										   </span>
+									   </div>
+									   -
+									   <div class="input-group">
+										   <input class="form-control date-picker" ng-model="endDate" readonly size="12" type="text" />
+										   <span class="input-group-addon">
+											   <i class="fa fa-calendar bigger-110"></i>
+										   </span>
+									   </div>
+								   </div>
+								   <div class="input-group" style="margin-left:20px;">
+									   <span class="input-group-addon">交易类型</span>
+									   <select class="chosen-select form-control" id="tradeType" ng-model="tradeType" name="status">
+										   <option value="">请选择</option>
+										   <option value="1">充值</option>
+										   <option value="2">提现</option>
+										   <option value="3">退款</option>
+										   <option value="4">签到</option>
+											 <option value="5">发红包</option>
+											 <option value="6">领取红包</option>
+											 <option value="7">提现手续费</option>
+									   </select>
+								   </div>
+
+						            <div class="form-group" style="margin-left:100px;margin-right:15px;">
+						                <button type="button" class="btn btn-white btn-success" ng-click="query()"><i class="ace-icon fa fa-search nav-search-icon"></i><strong>查询</strong></button>
+						            </div>
+						            <div class="form-group">
+						                <button type="button" class="btn btn-white btn-info" ng-click="reset()"><i class=" ace-icon fa fa-undo"></i><strong>重置</strong></button>
+						            </div>
+						        </form>
+							</div><!-- /.page-header -->
+
+							<div class="table-header">
+								交易流水列表
+							</div>
+							<div>
+								<table class="table table-striped table-bordered table-hover" ng-init="getPage()">
+									<thead>
+										<tr>
+											<th>序号</th>
+											<th>昵称</th>
+											<th>手机号码</th>
+											<th>交易类型</th>
+											<th>交易金额</th>
+											<th>流水类型</th>
+											<th>支付方式</th>
+											<th><i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>创建时间</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										<tr ng-repeat="row in data" repeat-finish align="center">
+											<td>{{($index+1) + (currentPage - 1) * itemsPerPage}}</td>
+											<td>{{row.nickName}}</td>
+											<td>{{row.mobile}}</td>
+											<td>{{row.tradeType | decode:5:'发红包':1:'充值':2:'提现':3:'退款':4:'签到':6:'领取红包':7:'提现手续费'}}</td>
+											<td style="color:#D53F40" ng-if="row.tradeKind == 2"><strong>+{{row.balance | currency :'￥'}}<strong></td>
+											<td style="color:#81a87b" ng-if="row.tradeKind == 1"><strong>-{{row.balance | currency :'￥'}}<strong></td>
+											<td ng-if="row.tradeKind == 0"><strong>{{row.balance | currency :'￥'}}<strong></td>
+											<td style="color:{{row.tradeKind | decode:0:'#81a87b':1:'#D53F40':2:'#D53F40'}}">-- {{row.tradeKind | decode:0:'其他':1:'支出':2:'收入'}} --</td>
+											<td>{{row.payWay | decode:0:'系统':1:'余额':2:'微信':3:'支付宝'}}</td>
+											<td>{{row.createTime | date : 'yyyy-MM-dd HH:mm:ss'}}</td>
+										</tr>
+									</tbody>
+								</table>
+								<div ng-show="totalItems > 0">
+					            <h5 style="font-size:14px;float:left;">
+					                <select ng-model="viewby" ng-change="setItemsPerPage(viewby)">
+					                    <option>10</option>
+					                    <option>20</option>
+					                    <option>30</option>
+					                </select>&nbsp;条记录 总共{{totalItems}}条记录
+								</h5>
+					            <uib-pagination
+					                    total-items="totalItems"
+					                    ng-model="currentPage"
+					                    max-size="5"
+					                    boundary-links="true"
+					                    force-ellipses="false"
+					                    first-text="首页"
+					                    last-text="末页"
+					                    previous-text="上一页"
+					                    next-text="下一页"
+					                    num-pages="numPages"
+					                    ng-change="pageChanged()"
+					                    items-per-page="itemsPerPage"
+					                    class="pagination-sm" style="float:right;margin:0;">
+					            </uib-pagination>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- PAGE CONTENT ENDS -->
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /.page-content -->
+	</div>
+</div><!-- /.main-content -->
+
+<script type="text/javascript">
+
+	jQuery(function($) {
+		$('.date-picker').datepicker({
+    		autoclose: true,
+    		todayHighlight: true,
+            format: "yyyy-mm-dd"
+    	})
+    	.next().on(ace.click_event, function(){
+    		$(this).prev().focus();
+    	});
+	});
+
+</script>
